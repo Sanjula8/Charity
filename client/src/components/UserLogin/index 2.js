@@ -1,11 +1,13 @@
-// import './App.css';
 import React, { useState, useEffect } from "react";
-function UserLogin() {
+
+function Login() {
 	const [formObject, setFormObject] = useState({});
+
 	function handleInputChange(event) {
 		const { name, value } = event.target;
 		setFormObject({ ...formObject, [name]: value });
 	}
+
 	function handleFormSubmit(event) {
 		event.preventDefault();
 		// if (formObject.email && formObject.password) {
@@ -14,6 +16,7 @@ function UserLogin() {
 		//       .catch(err => console.log(err));
 		//   }
 	}
+
 	return (
 		<div className="container">
 			<div className="col-6">
@@ -57,4 +60,5 @@ function UserLogin() {
 		</div>
 	);
 }
-export default UserLogin;
+
+export default Login;
