@@ -8,6 +8,11 @@ var passport = require("./config/passport");
 var PORT = process.env.PORT || 8080;
 var db = require("./models");
 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+  }
+
 // Creating express app and configuring middleware needed for authentication
 var app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Requiring our routes
-require("./routes/html-routes.js")(app);
+// require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
