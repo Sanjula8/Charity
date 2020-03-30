@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import './App.css';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -6,6 +6,7 @@ import Header from "../components/Header";
 // import Col from "../components/Col";
 
 function Home() {
+  
   return (
     <div>
       <Header>
@@ -27,7 +28,7 @@ function Home() {
             </p>
     </div>
   );
+
 }
 
 export default Home;
-
