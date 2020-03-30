@@ -8,10 +8,10 @@ import Header from "../components/Header";
 function Home() {
   return (
     <div>
-      {/* <Header>
+      <Header>
         <h1></h1>
         <h2>They're the Good Boys and Girls</h2>
-      </Header> */}
+      </Header>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet diam tortor, id
               consequat mauris ullamcorper eu. Orci varius natoque penatibus et magnis dis
