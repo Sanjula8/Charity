@@ -1,0 +1,29 @@
+footer{
+    height:60px;
+    width: 100vw;
+    background-color: lightgray;
+    margin-bottom: 0;
+    position: fixed;
+    align-content: center;
+    text-align: center;
+
+}
+
+.social-icon { 
+
+    list-style: none;
+    margin-bottom: 0;
+    align-content: center;
+    /* margin-left: 688px; */
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    padding: 5px;
+
+    }
+
+.social-icon img{
+
+    display: block;
+    align-content: center;
+}
