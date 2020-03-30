@@ -50,6 +50,12 @@ module.exports = function(sequelize, DataTypes) {
     phoneNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+
+    volunteer: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+
     }
 
 
