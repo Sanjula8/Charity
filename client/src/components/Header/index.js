@@ -6,7 +6,7 @@ import "./style.css";
 function Header(props) {
   return (
     <header className="header text-center">
-      <img src={HeaderImage}/>
+      <img className="header-image" src={HeaderImage}/>
     </header>
   );
 }

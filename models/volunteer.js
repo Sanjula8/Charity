@@ -5,49 +5,13 @@ module.exports = function(sequelize, DataTypes) {
   var Volunteer = sequelize.define("Volunteer", {
     // The email cannot be null, and must be a proper email before creation
     
-    volunteer_id:{
+    volunteer:{
         type: DataTypes.INTEGER,
         allowNull: false
 
     },
     
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-      isEmail: true
-      }
-    },
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    streetAddress: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    city: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    zipCode: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    phoneNumber: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    }
-
+    
 
 
 
