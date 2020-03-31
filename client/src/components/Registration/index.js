@@ -1,5 +1,6 @@
 // import './App.css';
 import React, { useState, useEffect } from "react";
+import "./style.css";
 
 function Registration() {
   const [formObject, setFormObject] = useState({});
@@ -17,24 +18,30 @@ function Registration() {
       //can be caught.
       //WHen running front end, back-end wasn't running, so just using fetch on /api/registration did not work.
       //Attempted to run both servers and send to another localhost, except fetch didn't like that
-      fetch("api/regstration", {
+      fetch("/api/registration", {
         method: "POST", // or 'PUT'
+        body: JSON.stringify(data),
+        credentials: "same-origin",
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+        }
       })
         .then(response => {
           console.log("Success:", response);
+          return response.json();
         })
-
+        .then(data => {
+          console.log(data);
+        })
         .catch(error => {
           console.error("Error:", error);
         });
     }
   }
   return (
-    <div className="container">
+    <div className="container" id="reg-container">
+      <h3>SIGN-UP HERE</h3>
+      <hr></hr>
       <form className="form-group">
         <div className="row">
           <div className="col-sm-6">
@@ -152,6 +159,7 @@ function Registration() {
               Submit
             </button>
           </div>
+          <hr></hr>
         </div>
       </form>
     </div>

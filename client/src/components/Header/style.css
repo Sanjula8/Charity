@@ -1,14 +1,10 @@
 .header {
-    height: 400px;
-    /* background-size: cover; */
-    background-position: center;
-    position: relative;
-  }
-.header-img {
-
-  
-  
-
-
+  height: 460px;
+  /* background-size: cover; */
+  /* background-position: center;
+    position: relative; */
 }
 
+.container {
+  max-width: 1500px;
+}
