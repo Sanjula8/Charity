@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from "react";
 // import './App.css';
 
-class Members extends Component {
-  render (){
+function Members() {
+  return (
     <div className="App">
       <header className="App-header">
-      <h4 style="font-weight: bolder;">Welcome <span className="member-name"></span></h4>
+        Welcome <span className="member-name"></span>
       </header>
     </div>
-  }
+  );
 }
 
 export default Members;

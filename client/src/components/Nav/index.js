@@ -3,7 +3,7 @@ import "./style.css";
 
 function Nav() {
   return (
-    <div class="container">
+    <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
           Charity Hub

@@ -6,11 +6,11 @@ module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
-  app.post("/api/userLogin", passport.authenticate("local"), function(
+  app.post("/api/userlogin", passport.authenticate("local"), function(
     req,
     res
   ) {
-    res.send({ user: req.userName });
+    res.json({ user: req.username });
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -29,17 +29,17 @@ module.exports = function(app) {
       state: req.body.state,
       zipCode: req.body.zipCode,
       phoneNumber: req.body.phoneNumber,
-      username: req.body.userName,
+      username: req.body.username,
       email: req.body.email,
       password: req.body.password
-    });
-    //   .then(function() {
-    res.send({ stringThing: "hello" });
-    // res.redirect(307, "/api/login");
-    // })
-    // .catch(function(err) {
-    //   res.status(401).json(err);
-    // });
+    })
+      .then(function() {
+        // res.send({ stringThing: "hello" });
+        res.redirect(307, "/api/userlogin");
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });
   });
 
   // Route for logging user out
@@ -49,17 +49,17 @@ module.exports = function(app) {
   });
 
   // Route for getting some data about our user to be used client side
-  // app.get("/api/user_data", function(req, res) {
-  //   if (!req.user) {
-  //     // The user is not logged in, send back an empty object
-  //     res.json({});
-  //   } else {
-  //     // Otherwise send back the user's email and id
-  //     // Sending back a password, even a hashed password, isn't a good idea
-  //     res.json({
-  //       email: req.user.email,
-  //       id: req.user.id
-  //     });
-  //   }
-  // });
+  app.get("/api/user_data", function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({ err: "User not found!" });
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        username: req.user.username,
+        id: req.user.id
+      });
+    }
+  });
 };
