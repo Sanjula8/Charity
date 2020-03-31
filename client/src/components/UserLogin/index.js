@@ -1,6 +1,7 @@
 // import './App.css';
 import React, { useState, useEffect } from "react";
 import "./style.css";
+
 function UserLogin() {
   const [formObject, setFormObject] = useState({});
   function handleInputChange(event) {
@@ -9,8 +10,9 @@ function UserLogin() {
   }
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.userName && formObject.password) {
-      fetch("/api/userLogin", {
+    if (formObject.username && formObject.password) {
+      console.log(JSON.stringify(formObject));
+      fetch("/api/userlogin", {
         method: "POST", // or 'PUT'
         body: JSON.stringify(formObject),
         credentials: "same-origin",
@@ -24,9 +26,14 @@ function UserLogin() {
         })
         .then(data => {
           console.log(data);
+          if (data.err) {
+            window.location.replace("/");
+          } else {
+            window.location.replace("/members");
+          }
         })
-        .catch(error => {
-          console.error("Error:", error);
+        .catch(function(err) {
+          console.log(err);
         });
     }
   }
@@ -36,24 +43,24 @@ function UserLogin() {
       <hr></hr>
       <div className="col-6">
         <form className="form-group">
-          <label for="exampleInputuserName1">User Name</label>
+          <label htmlFor="exampleInputusername1">User Name</label>
           <input
-            name="userName"
+            name="username"
             onChange={handleInputChange}
             type="username"
             className="form-control"
-            id="exampleInputuserName1"
-            aria-describedby="userNameHelp"
+            id="exampleInputusername1"
+            aria-describedby="usernameHelp"
             placeholder="Enter username"
           />
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label htmlFor="exampleInputpassword1">Password</label>
             <input
               name="password"
               onChange={handleInputChange}
               type="password"
               className="form-control"
-              id="exampleInputPassword1"
+              id="exampleInputpassword1"
               placeholder="Password"
             />
           </div>
@@ -62,7 +69,7 @@ function UserLogin() {
           <button
             type="submit"
             className="btn btn-secondary"
-            disabled={!(formObject.email && formObject.password)}
+            disabled={!(formObject.username && formObject.password)}
             onClick={handleFormSubmit}
           >
             Submit

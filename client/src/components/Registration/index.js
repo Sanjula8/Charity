@@ -10,7 +10,7 @@ function Registration() {
   }
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.userName && formObject.password) {
+    if (formObject.username && formObject.password) {
       const data = formObject;
       //Using Concurrently to run react server and server.js server on different ports, then trying to send
       //Fetch post to the backend server. Problem would be solved if there were an easy way to run both the
@@ -45,7 +45,7 @@ function Registration() {
       <form className="form-group">
         <div className="row">
           <div className="col-sm-6">
-            <label for="exampleInputFirstName1">First name</label>
+            <label htmlFor="exampleInputFirstName1">First name</label>
             <input
               name="firstName"
               onChange={handleInputChange}
@@ -57,7 +57,7 @@ function Registration() {
             />
           </div>
           <div className="col-sm-6">
-            <label for="exampleInputLastName1">Last name</label>
+            <label htmlFor="exampleInputLastName1">Last name</label>
             <input
               name="lastName"
               onChange={handleInputChange}
@@ -72,7 +72,7 @@ function Registration() {
 
         <div className="row">
           <div className="col-sm-5">
-            <label for="exampleInputStreetAddress1">Street address</label>
+            <label htmlFor="exampleInputStreetAddress1">Street address</label>
             <input
               name="streetAddress"
               onChange={handleInputChange}
@@ -84,7 +84,7 @@ function Registration() {
             />
           </div>
           <div className="col-sm-4">
-            <label for="exampleInputCity1">City</label>
+            <label htmlFor="exampleInputCity1">City</label>
             <input
               name="lastName"
               onChange={handleInputChange}
@@ -96,7 +96,7 @@ function Registration() {
             />
           </div>
           <div className="col-sm-4">
-            <label for="exampleInputCity1">Zip Code</label>
+            <label htmlFor="exampleInputCity1">Zip Code</label>
             <input
               name="zipCode"
               onChange={handleInputChange}
@@ -108,7 +108,7 @@ function Registration() {
             />
           </div>
           <div className="col-sm-4">
-            <label for="exampleInputEmail1">Email address</label>
+            <label htmlFor="exampleInputEmail1">Email address</label>
             <input
               name="email"
               onChange={handleInputChange}
@@ -126,9 +126,9 @@ function Registration() {
 
         <div className="row">
           <div className="col-sm-6">
-            <label for="exampleInputUserName1">User Name</label>
+            <label htmlFor="exampleInputUserName1">User Name</label>
             <input
-              name="userName"
+              name="username"
               onChange={handleInputChange}
               type="username"
               className="form-control"
@@ -138,7 +138,7 @@ function Registration() {
             />
           </div>
           <div className="col-sm-6">
-            <label for="exampleInputPassword1">Password</label>
+            <label htmlFor="exampleInputPassword1">Password</label>
             <input
               name="password"
               onChange={handleInputChange}
@@ -153,7 +153,7 @@ function Registration() {
             <button
               type="submit"
               className="btn btn-secondary"
-              disabled={!(formObject.userName && formObject.password)}
+              disabled={!(formObject.username && formObject.password)}
               onClick={handleFormSubmit}
             >
               Submit
