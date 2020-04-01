@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var charityAPI = require("../utils/charityAPI");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -61,5 +62,11 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+
+  app.get("/api/charity/:search", function(req, res) {
+    charityAPI(req.params.search).then(response => {
+      res.json(response);
+    });
   });
 };
