@@ -1,6 +1,6 @@
 import React from "react";
 import MembersBar from "../components/MembersNav/index";
-import CharityCard from "../components/CharitySearch/index";
+import CharitySearch from "../components/CharitySearch/index";
 // import './App.css';
 
 function Members() {
@@ -12,7 +12,7 @@ function Members() {
 					<h1>Welcome USER</h1>
 				</div>
 				<div>
-					<CharityCard />
+					<CharitySearch />
 				</div>
 			</div>
 		</div>
