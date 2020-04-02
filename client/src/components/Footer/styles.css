@@ -11,14 +11,14 @@
   list-style: none;
   margin-bottom: 0;
   align-content: center;
-  width: 120px;
   justify-content: space-between;
-  padding: 5px;
+  margin-left: 5px;
 }
 
 .social-icon img {
   display: inline-block;
-  align-content: center;
+  margin-left: 7px;
+  justify-content: center;
 }
 
 body {
@@ -42,4 +42,5 @@ body {
   padding-top: 20px;
   background-color: #f4f4f4;
   margin-bottom: 0px;
+  justify-content: center;
 }
