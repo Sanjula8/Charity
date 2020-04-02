@@ -1,9 +1,19 @@
 import React from "react";
+import twitterIcon from "../../images/twitter-icon.png";
+import faceIcon from "../../images/facebook-icon.png";
+import instaIcon from "../../images/insta-icon.png";
 import "./style.css";
 
 function Nav() {
   return (
-    <div className="container">
+    <>
+      <div className="row" style={{ height: "50px", backgroundColor: "white" }}>
+        <div className="social-icon">
+          <img src={twitterIcon} width="20" height="20" alt="twitter" />
+          <img src={faceIcon} width="20" height="25" alt="facebook" />
+          <img src={instaIcon} width="20" height="20" alt="instagram" />
+        </div>
+      </div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
           Charity Hub
@@ -28,7 +38,7 @@ function Nav() {
           </ul>
         </div>
       </nav>
-    </div>
+    </>
   );
 }
 export default Nav;

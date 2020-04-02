@@ -3,3 +3,16 @@
   margin-bottom: 40px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.17);
 }
+.social-icon {
+  list-style: none;
+  margin-bottom: 0;
+  align-content: center;
+  width: 120px;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.social-icon img {
+  display: block;
+  justify-content: end;
+}
