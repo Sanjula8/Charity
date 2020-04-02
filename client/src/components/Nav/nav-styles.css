@@ -5,14 +5,13 @@
 }
 .social-icon {
   list-style: none;
-  margin-bottom: 0;
-  align-content: center;
-  width: 120px;
-  justify-content: space-between;
-  padding: 5px;
+  display: inline;
+  margin-left: 7px;
+  justify-items: end;
 }
 
 .social-icon img {
-  display: block;
   justify-content: end;
+  margin-left: 7px;
+  padding: 2px;
 }
