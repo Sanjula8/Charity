@@ -9,6 +9,7 @@ import Nav from "./components/Nav/index";
 import Footer from "./components/Footer/index";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
 	return (
@@ -28,6 +29,9 @@ function App() {
 					</Route>
 					<Route path="/members">
 						<Members />
+					</Route>
+					<Route path="/profile">
+						<Profile />
 					</Route>
 					<Route exact path="/contact">
 						<Contact />
