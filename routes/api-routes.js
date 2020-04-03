@@ -103,6 +103,12 @@ module.exports = function(app) {
 
 	app.post("/api/charity/:id/save", function(req, res) {
 		console.log({ UserId: req.params.id });
-		res.json(response);
+		db.Charity.create({
+			CharityName: req.body.charityName,
+			EIN: req.body.ein,
+			UserId: req.params.id
+		}).then(response => {
+			console.log(response);
+		});
 	});
 };

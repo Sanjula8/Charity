@@ -14,10 +14,13 @@ export function CharityCard({ selectedCharity }) {
 		};
 	}
 
-	function SaveCard() {
-		fetch("/api/charity/", {
+	function SaveCard(id) {
+		fetch(`/api/charity/${id}/save`, {
 			method: "POST",
-			body: JSON.stringify(),
+			body: JSON.stringify({
+				charityName: selectedCharity.charityName,
+				ein: selectedCharity.ein
+			}),
 			credentials: "same-origin",
 			headers: {
 				"Content-Type": "application/json"
@@ -57,7 +60,7 @@ export function CharityCard({ selectedCharity }) {
 							Donate
 						</button>
 						<button
-							onClick={SaveCard}
+							onClick={SaveCard()}
 							className="btn btn-secondary mx-3 my-3"
 						>
 							Save
