@@ -17,15 +17,10 @@ function CharitySearch() {
 		<div className="container">
 			<SearchBar setData={setData} />
 			<div className="row">
-				<div className="col-6 scroll">
+				<div className="col-6">
 					<ul className="list-group pt-4">
 						{data.map(item => (
 							<li className="list-group-item">
-
-				<div className="col-6 p-4 scroll">
-					<ul className="list-group pt-4">
-						{data.map(item => (
-							<li className="list-group-item mt-0">
 								<button
 									type="button"
 									className="btn btn-link"
@@ -44,33 +39,6 @@ function CharitySearch() {
 			</div>
 		</div>
 	);
-
-  return (
-    <div className="container">
-      <SearchBar setData={setData} />
-      <div className="row">
-        <div className="col-6">
-          <ul className="list-group pt-4">
-            {data.map(item => (
-              <li className="list-group-item">
-                <button
-                  type="button"
-                  className="btn btn-link"
-                  onClick={event => handleSelected(item.ein)}
-                  data-ein={item.ein}>
-                  {item.charityName}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className=" col-6 p-4">
-          <CharityCard selectedCharity={selectedCharity} />
-        </div>
-      </div>
-    </div>
-  );
-
 }
 
 export default CharitySearch;
