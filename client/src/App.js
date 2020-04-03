@@ -1,11 +1,9 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/UserLogin";
-import Header from "./components/Header";
 import Register from "./pages/Register";
 import Members from "./pages/Members";
-import Nav from "./components/Nav/index";
 import Footer from "./components/Footer/index";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -28,7 +26,16 @@ function App() {
 						<Register />
 					</Route>
 					<Route path="/members">
-						<Members />
+						{document.cookie.match(/^.*loggedIn=true.*$/) ? (
+							<Members />
+						) : (
+							<a className="nav-item nav-link" href="/login">
+								Login First!
+							</a>
+						)}
+					</Route>
+					<Route exact path="/profile">
+						<Profile />
 					</Route>
 					<Route path="/profile">
 						<Profile />

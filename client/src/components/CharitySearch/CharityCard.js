@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../CharitySearch/index.css";
 
 export function CharityCard({ selectedCharity }) {
 	const [donationToggle, setDonationToggle] = useState("none");
@@ -13,9 +14,23 @@ export function CharityCard({ selectedCharity }) {
 		};
 	}
 
+	function SaveCard(id) {
+		fetch(`/api/charity/${id}/save`, {
+			method: "POST",
+			body: JSON.stringify({
+				charityName: selectedCharity.charityName,
+				ein: selectedCharity.ein
+			}),
+			credentials: "same-origin",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
+	}
+
 	function renderCharityCard() {
 		return (
-			<div className="card" style={{ width: "500" }}>
+			<div className="card scroll" style={{ width: "500" }}>
 				<div className="card-body">
 					<h2 className="card-title">
 						{selectedCharity.charityName}
@@ -44,7 +59,10 @@ export function CharityCard({ selectedCharity }) {
 						>
 							Donate
 						</button>
-						<button className="btn btn-secondary mx-3 my-3">
+						<button
+							onClick={SaveCard()}
+							className="btn btn-secondary mx-3 my-3"
+						>
 							Save
 						</button>
 						<button className="btn btn-info mx-3 my-3">

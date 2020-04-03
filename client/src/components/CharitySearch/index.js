@@ -13,7 +13,6 @@ function CharitySearch() {
 		setSelectedCharity(result.data);
 	}
 
-<<<<<<< HEAD
 	return (
 		<div className="container">
 			<SearchBar setData={setData} />
@@ -22,6 +21,11 @@ function CharitySearch() {
 					<ul className="list-group pt-4">
 						{data.map(item => (
 							<li className="list-group-item">
+
+				<div className="col-6 p-4 scroll">
+					<ul className="list-group pt-4">
+						{data.map(item => (
+							<li className="list-group-item mt-0">
 								<button
 									type="button"
 									className="btn btn-link"
@@ -40,7 +44,7 @@ function CharitySearch() {
 			</div>
 		</div>
 	);
-=======
+
   return (
     <div className="container">
       <SearchBar setData={setData} />
@@ -66,7 +70,7 @@ function CharitySearch() {
       </div>
     </div>
   );
->>>>>>> d58533e02246394b0cb015d8f71afc2164c79e81
+
 }
 
 export default CharitySearch;

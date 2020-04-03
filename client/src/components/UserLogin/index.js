@@ -11,6 +11,7 @@ function UserLogin() {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.username && formObject.password) {
+      document.cookie = "loggedIn=true";
       console.log(JSON.stringify(formObject));
       fetch("/api/userlogin", {
         method: "POST", // or 'PUT'
@@ -72,8 +73,7 @@ function UserLogin() {
             type="submit"
             className="btn btn-secondary"
             disabled={!(formObject.username && formObject.password)}
-            onClick={handleFormSubmit}
-          >
+            onClick={handleFormSubmit}>
             Submit
           </button>
         </div>

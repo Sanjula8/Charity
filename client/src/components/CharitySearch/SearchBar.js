@@ -15,7 +15,7 @@ export function SearchBar({ setData }) {
 	return (
 		<>
 			<div className="row-md-12 justify-content-center">
-				<h5>Search for a Charity</h5>
+				<h5>Search for a Charity that you'd like to contribute to</h5>
 			</div>
 			<div className="row-md-12 justify-content-center">
 				<h5>Enter a cause you want to support!</h5>
