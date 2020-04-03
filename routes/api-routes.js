@@ -82,4 +82,15 @@ module.exports = function(app) {
       res.json(apiResponse.data);
     });
   });
+
+  app.post("/api/charity/:id/save", function(req, res) {
+    console.log({ UserId: req.params.id });
+    db.Charity.create({
+      CharityName: req.body.charityName,
+      EIN: req.body.ein,
+      UserId: req.params.id
+    }).then(response => {
+      console.log(response);
+    });
+  });
 };

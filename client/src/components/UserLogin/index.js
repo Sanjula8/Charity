@@ -11,6 +11,8 @@ function UserLogin() {
   function handleFormSubmit(event) {
     event.preventDefault();
     if (formObject.username && formObject.password) {
+      document.cookie = "loggedIn=true";
+      console.log(JSON.stringify(formObject));
       fetch("/api/userlogin", {
         method: "POST", // or 'PUT'
         body: JSON.stringify(formObject),
