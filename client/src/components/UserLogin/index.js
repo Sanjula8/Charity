@@ -24,6 +24,8 @@ function UserLogin() {
           console.log("Success:", response);
           return response.json();
         })
+        //the data is a parsed response from the JSON
+
         .then(data => {
           console.log(data);
           if (data.err) {
