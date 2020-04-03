@@ -11,29 +11,13 @@ module.exports = function(app) {
     req,
     res
   ) {
-    db.Users.findOne({
-      where: {
-        username: req.body.username
-      }
-    })
-      .then(userdata => {
-        res.cookie("firstname", userdata.dataValues.firstName, {
-          httpOnly: true,
-          signed: true
-        });
-
-        res.json({ firstname: userdata.dataValues.firstName });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    res.json(req.user);
   });
 
-  app.get("/api/firstname", function(req, res) {
-    var firstname = req.signedCookies;
-    console.log(req.signedCookies);
-    res.send({ firstname: firstname });
-  });
+  // db.Users.findOne({
+  //   where: {
+  //     username: req.body.username
+  //   }
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -78,10 +62,8 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        username: req.user.username,
-        id: req.user.id
-      });
+      console.log(req.user);
+      res.send(req.user);
     }
   });
 
