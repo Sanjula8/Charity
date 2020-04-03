@@ -5,7 +5,7 @@ var session = require("express-session");
 var passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3001;
 var db = require("./models");
 
 // Serve up static assets (usually on heroku)
