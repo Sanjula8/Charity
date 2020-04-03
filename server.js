@@ -3,6 +3,7 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var cookieParser = require("cookie-parser");
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 3001;
@@ -24,6 +25,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cookieParser("cookieSecret"));
 
 // Requiring our routes
 // require("./routes/charity-routes.js")(app);
