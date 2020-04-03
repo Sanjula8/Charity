@@ -83,12 +83,12 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/charity/:id/save", function(req, res) {
-    console.log({ UserId: req.params.id });
+  app.post("/api/charity/save", function(req, res) {
+    console.log({ UserId: req.user.id });
     db.Charity.create({
       CharityName: req.body.charityName,
       EIN: req.body.ein,
-      UserId: req.params.id
+      UserId: req.user.id
     }).then(response => {
       console.log(response);
     });
