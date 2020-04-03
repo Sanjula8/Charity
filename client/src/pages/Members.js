@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import MembersBar from "../components/MembersNav/index";
 import CharitySearch from "../components/CharitySearch/index";
 // import './App.css';
 
 function Members() {
-  fetch("/api/firstname", {
-    method: "GET",
-    credentials: "same-origin"
-  }).then(response => {
-    console.log(response);
-  });
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    fetch("/api/user_data", {
+      method: "GET",
+      credentials: "same-origin"
+    })
+      .then(res => res.json())
+      .then(response => {
+        setUser(response);
+      });
+  }, []);
 
   return (
     <div>
@@ -17,7 +23,10 @@ function Members() {
       <div className="container">
         <div className="text-center">
           <h1>
-            {/* Welcome to CharityHub><span>{formObject.firstName}</span> */}
+            Welcome to CharityHub
+            <span>
+              {user.firstName} {user.lastName}
+            </span>
           </h1>
         </div>
         <div>
@@ -29,7 +38,3 @@ function Members() {
 }
 
 export default Members;
-
-// $.get("/api/user_data").then(function (data) {
-//     $(".member-name").text(data.email);
-//   });
