@@ -3,6 +3,8 @@ import "../CharitySearch/index.css";
 
 export function CharityCard({ selectedCharity }) {
   const [donationToggle, setDonationToggle] = useState("none");
+  const [donationValue, setDonationValue] = useState(0);
+  const [volunteer, setVolunteer] = useState(false);
 
   function toggleDonation(event) {
     if (donationToggle === "flex") setDonationToggle("none");
@@ -14,12 +16,27 @@ export function CharityCard({ selectedCharity }) {
     };
   }
 
-  function SaveCard() {
-    fetch(`/api/charity/save`, {
+  function toggleVolunteer(event) {
+    if (event.target.checked) setVolunteer(true);
+    else setVolunteer(false);
+  }
+
+  function getDonationValue(event) {
+    //event.target.value
+    const { value } = event.target;
+    setDonationValue(value);
+  }
+
+  function SaveCard(event) {
+    event.preventDefault();
+    console.log(parseInt(donationValue));
+    fetch("/api/charity/save", {
       method: "POST",
       body: JSON.stringify({
         charityName: selectedCharity.charityName,
-        ein: selectedCharity.ein
+        ein: selectedCharity.ein,
+        donation: parseInt(donationValue),
+        volunteer: volunteer
       }),
       credentials: "same-origin",
       headers: {
@@ -50,12 +67,15 @@ export function CharityCard({ selectedCharity }) {
               onClick={toggleDonation}>
               Donate
             </button>
-            <button
-              onClick={SaveCard()}
-              className="btn btn-secondary mx-3 my-3">
+            <button onClick={SaveCard} className="btn btn-secondary mx-3 my-3">
               Save
             </button>
-            <button className="btn btn-info mx-3 my-3">Volunteer</button>
+            <input
+              type="checkbox"
+              className="form-control"
+              onChange={toggleVolunteer}
+            />
+            Would you like to volunteer
           </div>
           <div className="row" style={donationStyle()}>
             <div className="input-group mb-2">
@@ -63,10 +83,17 @@ export function CharityCard({ selectedCharity }) {
                 <div className="input-group-text">$</div>
               </div>
               <input
+                onChange={getDonationValue}
                 type="text"
                 className="form-control"
-                name="inlineFormInputGroup"
+                name="donationValue"
                 placeholder="Enter Amount"
+              />
+              <input
+                type="submit"
+                className="form-control"
+                value="Confirm your donation"
+                onClick={SaveCard}
               />
             </div>
           </div>
