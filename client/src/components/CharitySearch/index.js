@@ -24,8 +24,7 @@ function CharitySearch() {
                   type="button"
                   className="btn btn-link"
                   onClick={event => handleSelected(item.ein)}
-                  data-ein={item.ein}
-                >
+                  data-ein={item.ein}>
                   {item.charityName}
                 </button>
               </li>
