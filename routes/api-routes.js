@@ -92,37 +92,38 @@ module.exports = function (app) {
   });
 
   app.post("/api/charity/save", function (req, res) {
+    console.log(req.body);
     db.Charity.findOne({
       where: {
-        EIN: req.body.ein,
+        ein: req.body.ein,
       },
     }).then((response) => {
       if (response) {
         db.Charity.update(
           {
-            Donation: response.dataValues.Donation + req.body.donation,
-            Volunteer: req.body.volunteer,
+            donation: response.dataValues.donation + req.body.donation,
+            volunteer: req.body.volunteer,
           },
           {
-            where: { EIN: req.body.ein },
+            where: { ein: req.body.ein },
           }
         ).then((response) => {
           db.Charity.findOne({
             where: {
-              EIN: req.body.ein,
+              ein: req.body.ein,
             },
           }).then((response) => {
-            res.send({ newDonation: response.dataValues.Donation });
+            res.send({ newDonation: response.dataValues.donation });
           });
         });
       } else {
         db.Charity.create(
           {
-            CharityName: req.body.charityName,
-            EIN: req.body.ein,
+            charityName: req.body.charityName,
+            ein: req.body.ein,
             UserId: req.user.id,
-            Donation: req.body.donation,
-            Volunteer: req.body.volunteer,
+            donation: req.body.donation,
+            volunteer: req.body.volunteer,
           },
           {
             returning: true,
@@ -131,51 +132,24 @@ module.exports = function (app) {
         ).then((response) => {
           db.Charity.findOne({
             where: {
-              EIN: req.body.ein,
+              ein: req.body.ein,
             },
           }).then((response) => {
-            res.send({ newDonation: response.dataValues.Donation });
+            res.send({ newDonation: response.dataValues.donation });
           });
         });
       }
     });
   });
-};
 
-app.get("/api/charity/profile", function (req, res) {
-  var userdata, charitydata;
-  db.Users.findOne({
-    where: {
-      username: req.body.username,
-    },
-  }).then((response) => {
-    userdata = response.dataValues;
+  app.get("/bananas", function (req, res) {
     db.Charity.findAll({
       where: {
-        UserId: response.dataValues.id,
+        UserId: req.user.id,
       },
     }).then((response) => {
-      charitydata = response.dataValues;
-      console.log(userdata);
-      console.log(charitydata);
-      res.send({ userdata: userdata, charitydata: chartydata });
+      console.log("USERCHARITIES", response);
+      res.json(response);
     });
   });
-});
-
-// app.post("/api/charity/profile", function(req, res) {
-//   db.Users.findOne({
-//     where: {
-//       username: req.body.username
-//     }
-//   }).then(response => {});
-//   db.Charity.create({
-//     CharityName: req.body.charityName,
-//     EIN: req.body.ein,
-//     UserId: req.user.id,
-//     Donation: req.body.donation,
-//     Volunteer: req.body.volunteer
-//   }).then(response => {
-//     console.log(req.body.donationValue);
-//   });
-// });
+};

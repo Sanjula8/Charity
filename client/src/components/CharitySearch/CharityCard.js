@@ -1,17 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../CharitySearch/index.css";
 
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth();
 var yyyy = today.getFullYear();
-var today = dd + "/" + mm + "/" + yyyy;
+var todayDate = dd + "/" + mm + "/" + yyyy;
 
 export function CharityCard({ selectedCharity }) {
   const [donationToggle, setDonationToggle] = useState("none");
   const [donationValue, setDonationValue] = useState(0);
   const [volunteer, setVolunteer] = useState(false);
   const [totalDonation, setTotalDonation] = useState(0);
+
+  useEffect(() => {
+    fetch("/api/charity/save", {
+      method: "POST",
+      body: JSON.stringify({
+        charityName: selectedCharity.charityName,
+        ein: selectedCharity.ein,
+        donation: parseInt(donationValue),
+        volunteer: volunteer,
+      }),
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        setTotalDonation(response.newDonation);
+      });
+  });
 
   function toggleDonation(event) {
     if (donationToggle === "flex") setDonationToggle("none");
@@ -39,7 +59,7 @@ export function CharityCard({ selectedCharity }) {
     fetch("/api/charity/save", {
       method: "POST",
       body: JSON.stringify({
-        charityName: selectedCharity.charityName,
+        charityname: selectedCharity.charityName,
         ein: selectedCharity.ein,
         donation: 0,
         volunteer: volunteer,
@@ -71,7 +91,7 @@ export function CharityCard({ selectedCharity }) {
       });
   }
 
-  function renderCharityCard() {
+  function renderCharityCard({ selectedCharity }) {
     return (
       <div className="card scroll" style={{ width: "100%", height: "auto" }}>
         <div className="card-body">
@@ -136,7 +156,8 @@ export function CharityCard({ selectedCharity }) {
           <div className="row " style={donationStyle()}>
             <ul className="list-group">
               <li className="list-item" id="addedDonation">
-                <span style={{ fontSize: "15pt" }}>{today}</span>You donated: $
+                <span style={{ fontSize: "15pt" }}>{todayDate}</span>You
+                donated: $
                 <span style={{ fontSize: "15pt" }}>{donationValue}</span>
               </li>
               <li className="list-item">
@@ -151,6 +172,7 @@ export function CharityCard({ selectedCharity }) {
     );
   }
 
-  if (Object.keys(selectedCharity).length !== 0) return renderCharityCard();
+  if (Object.keys(selectedCharity).length !== 0)
+    return renderCharityCard({ selectedCharity });
   else return null;
 }
