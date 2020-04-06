@@ -17,14 +17,16 @@ function CharitySearch() {
 		<div className="container">
 			<SearchBar setData={setData} />
 			<div className="row">
-				<div className="col-6">
-					<ul className="list-group pt-4">
-						{data.map(item => (
-							<li className="list-group-item">
+				<div className="col-6 p-4 scroll">
+					<ul className="list-group">
+						{data.map((item) => (
+							<li className="list-group-item mt-0">
 								<button
 									type="button"
 									className="btn btn-link"
-									onClick={event => handleSelected(item.ein)}
+									onClick={(event) =>
+										handleSelected(item.ein)
+									}
 									data-ein={item.ein}
 								>
 									{item.charityName}
