@@ -12,6 +12,7 @@ export function CharityCard({ selectedCharity }) {
   const [donationValue, setDonationValue] = useState(0);
   const [volunteer, setVolunteer] = useState(false);
   const [totalDonation, setTotalDonation] = useState(0);
+  // const [deleteCard, setDeleteCard] = useState([]);
 
   useEffect(() => {
     fetch("/api/charity/save", {
@@ -31,7 +32,7 @@ export function CharityCard({ selectedCharity }) {
       .then((response) => {
         setTotalDonation(response.newDonation);
       });
-  });
+  }, []);
 
   function toggleDonation(event) {
     if (donationToggle === "flex") setDonationToggle("none");
@@ -52,6 +53,26 @@ export function CharityCard({ selectedCharity }) {
     //event.target.value
     const { value } = event.target;
     setDonationValue(value);
+  }
+
+  // function deleteCard(event) {
+  //   //event.target.value
+  //   const { value } = event.target;
+  //   setDeleteCard(value);
+  // }
+
+  function deleteCard(event) {
+    event.preventDefault();
+    fetch("/api/charity/delete", {
+      method: "DELETE",
+      body: JSON.stringify({
+        id: req.body.id,
+      }),
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
   function SaveBtn(event) {
@@ -166,6 +187,9 @@ export function CharityCard({ selectedCharity }) {
                 </span>
               </li>
             </ul>
+            <button type="button" value="delete" onClick={deleteCard}>
+              delete
+            </button>
           </div>
         </div>
       </div>

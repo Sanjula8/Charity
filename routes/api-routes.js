@@ -2,7 +2,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
 var { searchWithTerm, searchWithEIN } = require("../utils/charityAPI");
-const gravatar = require("gravatar");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -88,6 +87,17 @@ module.exports = function (app) {
       // );
 
       res.json(apiResponse.data);
+    });
+  });
+
+  app.delete("/api/charity/delete", function (req, res) {
+    db.Charity.findOne({
+      where: {
+        id: req.body.id,
+      },
+    }).then((response) => {
+      console.log("USERCHARITIES", response);
+      res.json(response);
     });
   });
 
