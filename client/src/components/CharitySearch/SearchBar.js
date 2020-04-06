@@ -17,14 +17,11 @@ export function SearchBar({ setData }) {
       <div className="row-md-12 justify-content-center">
         <h5>Search for a Charity that you'd like to contribute to</h5>
       </div>
-      <div className="row-md-12 justify-content-center">
-        <h5>Enter a cause you want to support!</h5>
-      </div>
       <div className="row justify-content-center">
         <form className="form-inline d-flex justify-content-center md-form form-sm mt-0">
           <i className="fas fa-search" aria-hidden="true"></i>
           <input
-            className="form-control form-control-sm ml-3 w-75"
+            className="form-control form-control-md lg-3 w-200 mx-3"
             type="text"
             placeholder="Search"
             aria-label="Search"

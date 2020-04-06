@@ -1,10 +1,9 @@
 .header {
-  height: 460px;
-  /* background-size: cover; */
-  /* background-position: center;
-    position: relative; */
-}
-
-.container {
-  max-width: 1500px;
+  height: 400px;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 60px;
+  /* background-size: cover;
+  background-position: center;
+  position: relative; */
 }

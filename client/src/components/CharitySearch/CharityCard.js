@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import "../CharitySearch/index.css";
 
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth();
+var yyyy = today.getFullYear();
+var today = dd + "/" + mm + "/" + yyyy;
+
 export function CharityCard({ selectedCharity }) {
   const [donationToggle, setDonationToggle] = useState("none");
   const [donationValue, setDonationValue] = useState(0);
   const [volunteer, setVolunteer] = useState(false);
+  const [totalDonation, setTotalDonation] = useState(0);
 
   function toggleDonation(event) {
     if (donationToggle === "flex") setDonationToggle("none");
@@ -12,7 +19,7 @@ export function CharityCard({ selectedCharity }) {
   }
   function donationStyle() {
     return {
-      display: donationToggle
+      display: donationToggle,
     };
   }
 
@@ -27,27 +34,46 @@ export function CharityCard({ selectedCharity }) {
     setDonationValue(value);
   }
 
-  function SaveCard(event) {
+  function SaveBtn(event) {
     event.preventDefault();
-    console.log(parseInt(donationValue));
+    fetch("/api/charity/save", {
+      method: "POST",
+      body: JSON.stringify({
+        charityName: selectedCharity.charityName,
+        ein: selectedCharity.ein,
+        donation: 0,
+        volunteer: volunteer,
+      }),
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+  function DonateBtn(event) {
+    event.preventDefault();
     fetch("/api/charity/save", {
       method: "POST",
       body: JSON.stringify({
         charityName: selectedCharity.charityName,
         ein: selectedCharity.ein,
         donation: parseInt(donationValue),
-        volunteer: volunteer
+        volunteer: volunteer,
       }),
       credentials: "same-origin",
       headers: {
-        "Content-Type": "application/json"
-      }
-    });
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        setTotalDonation(response.newDonation);
+      });
   }
 
   function renderCharityCard() {
     return (
-      <div className="card scroll" style={{ width: "500" }}>
+      <div className="card scroll" style={{ width: "100%", height: "auto" }}>
         <div className="card-body">
           <h2 className="card-title">{selectedCharity.charityName}</h2>
           <hr></hr>
@@ -61,21 +87,31 @@ export function CharityCard({ selectedCharity }) {
           <h5 className="card-subtitle mb-2 text-muted">Physical Address:</h5>
           <hr></hr>
           <p className="card-text">{selectedCharity.mission}</p>
+          <div className="row justify-content-start d-inline-flex w-100">
+            <div className="col-sm-10">
+              <h5 style={{ color: "green" }}>
+                Yes, I would you like to volunteer!
+              </h5>
+            </div>
+            <div className="col-sm-2">
+              <input
+                type="checkbox"
+                className="form-control"
+                onChange={toggleVolunteer}
+              />
+            </div>
+          </div>
           <div className="row">
             <button
               className="btn btn-success mx-3 my-3"
               onClick={toggleDonation}>
               Donate
             </button>
-            <button onClick={SaveCard} className="btn btn-secondary mx-3 my-3">
+            <button onClick={SaveBtn} className="btn btn-secondary mx-3 my-3">
               Save
             </button>
-            <input
-              type="checkbox"
-              className="form-control"
-              onChange={toggleVolunteer}
-            />
-            Would you like to volunteer
+            <hr></hr>
+            <br></br>
           </div>
           <div className="row" style={donationStyle()}>
             <div className="input-group mb-2">
@@ -93,9 +129,22 @@ export function CharityCard({ selectedCharity }) {
                 type="submit"
                 className="form-control"
                 value="Confirm your donation"
-                onClick={SaveCard}
+                onClick={DonateBtn}
               />
             </div>
+          </div>
+          <div className="row " style={donationStyle()}>
+            <ul className="list-group">
+              <li className="list-item" id="addedDonation">
+                <span style={{ fontSize: "15pt" }}>{today}</span>You donated: $
+                <span style={{ fontSize: "15pt" }}>{donationValue}</span>
+              </li>
+              <li className="list-item">
+                <span id="totalDonation" style={{ fontSize: "20pt" }}>
+                  Your total donations: ${totalDonation}
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

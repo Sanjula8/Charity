@@ -21,25 +21,19 @@
   align-content: center;
 }
 
-body {
-  height: 100%;
-}
-
-#wrap {
-  min-height: 100%;
-}
-
-#main {
-  overflow: auto;
-  padding-bottom: 150px; /* this needs to be bigger than footer height*/
-}
-
-.footer {
-  position: relative;
-  margin-top: -150px; /* negative value of footer height */
-  height: 70px;
-  clear: both;
+footer {
+  height: 50px;
   padding-top: 20px;
-  background-color: rgb(230, 229, 229);
+  background-color: #f8f9fa;
   margin-bottom: 0px;
+  box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.19);
+}
+#copyright {
+  font-size: 15pt;
+  text-align: center;
+  height: 100px;
+  background-color: #ffca0a;
+  box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.19);
+  color: black;
+  padding-top: 30px;
 }

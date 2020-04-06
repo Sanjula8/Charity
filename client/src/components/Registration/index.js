@@ -41,7 +41,8 @@ function Registration() {
   }
   return (
     <div className="container" id="reg-container">
-      <h3>SIGN-UP HERE</h3>
+      <br></br>
+      <h3>Sign-Up Here</h3>
       <hr></hr>
       <form className="form-group">
         <div className="row">
