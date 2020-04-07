@@ -9,11 +9,6 @@ require("dotenv").config();
 var PORT = process.env.PORT || 3001;
 var db = require("./models");
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
 // Creating express app and configuring middleware needed for authentication
 var app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +24,14 @@ app.use(passport.session());
 // Requiring our routes
 // require("./routes/charity-routes.js")(app);
 require("./routes/api-routes.js")(app);
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+}
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function () {
