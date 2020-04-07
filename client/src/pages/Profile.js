@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import MembersNav from "../components/MembersNav/index";
 import Footer from "../components/Footer/index";
 import { ProfileCard } from "../components/CharitySearch/ProfileCard";
+// import UserInfo from "../components/UserInfo";
 
 class Profile extends Component {
   state = {
@@ -25,6 +26,7 @@ class Profile extends Component {
     return (
       <div>
         <MembersNav />
+        {/* <UserInfo /> */}
         <div className="container" id="profile-container">
           <div className="row mt-5">
             {this.state.selectedCharities.length ? (
