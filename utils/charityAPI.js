@@ -3,13 +3,13 @@ var axios = require("axios");
 function searchWithTerm(query) {
   // Gets all Non-Profits Organizations
   return axios.get(
-    `https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&search=${query}`
+    `https://api.data.charitynavigator.org/v2/Organizations?app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}&search=${query}`
   );
 }
 
 function searchWithEIN(ein) {
   return axios.get(
-    `https://api.data.charitynavigator.org/v2/Organizations/${ein}?app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}`
+    `https://api.data.charitynavigator.org/v2/Organizations/${ein}?app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
   );
 }
 
