@@ -54,15 +54,19 @@ export function ProfileCard({ selectedCharity, onProfile }) {
     setDonationValue(value);
   }
 
-  //   function deleteCard(id) {
-  //     fetch("/delete/" + id)
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         console.log(data);
-  //       });
-  //   }
+  // function deleteCard(id) {
+  //   fetch("/api/delete/" + id, {
+  //     method: "DELETE",
+  //     credentials: "same-origin",
+  //   })
+  //     .then((response) => {
+  //       console.log(response);
+  //       return response;
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }
 
   function DonateBtn(event) {
     event.preventDefault();
@@ -124,9 +128,8 @@ export function ProfileCard({ selectedCharity, onProfile }) {
             <button
               type="button"
               value="delete"
-              className="btn btn-danger mx-3 my-3"
-              //   onClick={deleteCard(selectedCharity.id)}
-            >
+              className="btn btn-danger mx-3 my-3">
+              {/* // onClick={deleteCard(selectedCharity.id)} */}
               delete
             </button>
 
