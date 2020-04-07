@@ -90,16 +90,29 @@ module.exports = function (app) {
     });
   });
 
-  app.delete("/api/charity/delete", function (req, res) {
-    db.Charity.findOne({
-      where: {
-        id: req.body.id,
-      },
-    }).then((response) => {
-      console.log("USERCHARITIES", response);
-      res.json(response);
-    });
-  });
+  //DELETE query for deleting CharotyCards from user profile
+  // app.get("/delete/:id", function (req, res) {
+  //   console.log(res);
+  //   db.Charity.destroy({
+  //     where: {
+  //       id: req.params.id,
+  //     },
+  //   }).then(
+  //     function (cardDeleted) {
+  //       if (cardDeleted === 1) {
+  //         console.log("Card deleted successfully!");
+  //         db.Charity.findAll({}).then((data) => {
+  //           res.send(data.dataValues);
+  //         });
+  //       } else {
+  //         console.log("didnt delete anything");
+  //       }
+  //     },
+  //     function (err) {
+  //       console.log(err);
+  //     }
+  //   );
+  // });
 
   app.post("/api/charity/save", function (req, res) {
     console.log(req.body);
@@ -152,7 +165,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/bananas", function (req, res) {
+  app.get("/getcharity", function (req, res) {
     db.Charity.findAll({
       where: {
         UserId: req.user.id,

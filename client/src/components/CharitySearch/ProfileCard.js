@@ -7,7 +7,7 @@ var mm = today.getMonth();
 var yyyy = today.getFullYear();
 var todayDate = dd + "/" + mm + "/" + yyyy;
 
-export function CharityCard({ selectedCharity, onProfile }) {
+export function ProfileCard({ selectedCharity, onProfile }) {
   const [donationToggle, setDonationToggle] = useState("none");
   const [donationValue, setDonationValue] = useState(0);
   const [volunteer, setVolunteer] = useState(false);
@@ -54,22 +54,16 @@ export function CharityCard({ selectedCharity, onProfile }) {
     setDonationValue(value);
   }
 
-  function SaveBtn(event) {
-    event.preventDefault();
-    fetch("/api/charity/save", {
-      method: "POST",
-      body: JSON.stringify({
-        charityName: selectedCharity.charityName,
-        ein: selectedCharity.ein,
-        donation: 0,
-        volunteer: volunteer,
-      }),
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
+  //   function deleteCard(id) {
+  //     fetch("/delete/" + id)
+  //       .then((response) => {
+  //         return response.json();
+  //       })
+  //       .then((data) => {
+  //         console.log(data);
+  //       });
+  //   }
+
   function DonateBtn(event) {
     event.preventDefault();
     fetch("/api/charity/save", {
@@ -91,7 +85,7 @@ export function CharityCard({ selectedCharity, onProfile }) {
       });
   }
 
-  function renderCharityCard({ selectedCharity, onProfile }) {
+  function renderProfileCard({ selectedCharity, onProfile }) {
     return (
       <div className="card scroll" style={{ width: "100%", height: "auto" }}>
         <div className="card-body">
@@ -127,8 +121,13 @@ export function CharityCard({ selectedCharity, onProfile }) {
               onClick={toggleDonation}>
               Donate
             </button>
-            <button onClick={SaveBtn} className="btn btn-secondary mx-3 my-3">
-              Save
+            <button
+              type="button"
+              value="delete"
+              className="btn btn-danger mx-3 my-3"
+              //   onClick={deleteCard(selectedCharity.id)}
+            >
+              delete
             </button>
 
             <hr></hr>
@@ -172,8 +171,7 @@ export function CharityCard({ selectedCharity, onProfile }) {
       </div>
     );
   }
-
   if (Object.keys(selectedCharity).length !== 0)
-    return renderCharityCard({ selectedCharity });
+    return renderProfileCard({ selectedCharity });
   else return null;
 }
