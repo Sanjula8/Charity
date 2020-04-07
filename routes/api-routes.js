@@ -2,7 +2,6 @@
 var db = require("../models");
 var passport = require("../config/passport");
 var { searchWithTerm, searchWithEIN } = require("../utils/charityAPI");
-const gravatar = require("gravatar");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -91,6 +90,30 @@ module.exports = function (app) {
     });
   });
 
+  //DELETE query for deleting CharotyCards from user profile
+  // app.get("/delete/:id", function (req, res) {
+  //   console.log(res);
+  //   db.Charity.destroy({
+  //     where: {
+  //       id: req.params.id,
+  //     },
+  //   }).then(
+  //     function (cardDeleted) {
+  //       if (cardDeleted === 1) {
+  //         console.log("Card deleted successfully!");
+  //         db.Charity.findAll({}).then((data) => {
+  //           res.send(data.dataValues);
+  //         });
+  //       } else {
+  //         console.log("didnt delete anything");
+  //       }
+  //     },
+  //     function (err) {
+  //       console.log(err);
+  //     }
+  //   );
+  // });
+
   app.post("/api/charity/save", function (req, res) {
     console.log(req.body);
     db.Charity.findOne({
@@ -142,7 +165,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/bananas", function (req, res) {
+  app.get("/getcharity", function (req, res) {
     db.Charity.findAll({
       where: {
         UserId: req.user.id,

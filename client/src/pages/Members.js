@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MembersBar from "../components/MembersNav/index";
 import CharitySearch from "../components/CharitySearch/index";
 import Footer from "../components/Footer/index";
-// import './App.css';
+// import "./App.css";
 
 function Members() {
   const [user, setUser] = useState({});

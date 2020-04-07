@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import MembersNav from "../components/MembersNav/index";
-import { CharityCard } from "../components/CharitySearch/CharityCard";
+import Footer from "../components/Footer/index";
+import { ProfileCard } from "../components/CharitySearch/ProfileCard";
+// import UserInfo from "../components/UserInfo";
 
 class Profile extends Component {
   state = {
@@ -9,7 +11,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    fetch("/bananas")
+    fetch("/getcharity")
       .then((res) => res.json())
       .then((data) => {
         console.log("Data", data);
@@ -24,18 +26,21 @@ class Profile extends Component {
     return (
       <div>
         <MembersNav />
-        <div className="row">
-          {this.state.selectedCharities.length ? (
-            this.state.selectedCharities.map((charityItem) => {
-              return (
-                <div className="col-4">
-                  <CharityCard selectedCharity={charityItem} />
-                </div>
-              );
-            })
-          ) : (
-            <h1>nothing yet</h1>
-          )}
+        {/* <UserInfo /> */}
+        <div className="container" id="profile-container">
+          <div className="row mt-5">
+            {this.state.selectedCharities.length ? (
+              this.state.selectedCharities.map((charityItem) => {
+                return (
+                  <div className="col-4">
+                    <ProfileCard selectedCharity={charityItem} />
+                  </div>
+                );
+              })
+            ) : (
+              <Footer />
+            )}
+          </div>
         </div>
       </div>
     );
