@@ -15,7 +15,7 @@ export function SearchBar({ setData }) {
   return (
     <>
       <div className="row justify-content-center">
-        <h5>Search for a Charity that you'd like to contribute to</h5>
+        <h5>Keep track of your favorite Charities and your donations</h5>
       </div>
       <div className="row justify-content-center">
         <form className="form-inline d-flex justify-content-center md-form form-sm mt-0">
