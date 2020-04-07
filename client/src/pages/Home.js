@@ -27,8 +27,7 @@ function Home() {
             natoque penatibus et magnis dis parturient montes, nascetur
             ridiculus mus. Pellentesque et dui id justo finibus sollicitudin at
             et metus. Ut feugiat tellus nec metus commodo, sed suscipit nisi
-            gravida. Duis eget vestibulum quam, ut porttitor sem. Donec sagittis
-            mi sollicitudin turpis
+            gravida.
           </div>
           <div className="col-6"></div>
         </section>
