@@ -9,8 +9,8 @@ import "./footer-styles.css";
 function Footer() {
   return (
     <>
-      <footer className="row d-flex p-2 bd-highlight">
-        <div className="social-icon">
+      <footer className="row d-flex p-2 bd-highlight justify-content-center">
+        <div className="social-icon d-flex align-items-center">
           <img src={twitterIcon} width="20" height="20" alt="twitter" />
           <img src={faceIcon} width="20" height="25" alt="facebook" />
           <img src={instaIcon} width="20" height="20" alt="instagram" />

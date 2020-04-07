@@ -8,9 +8,9 @@ function Nav() {
   return (
     <>
       <div
-        className="row"
+        className="row justify-content-end pr-5"
         style={{ height: "50px", backgroundColor: "#ffca0a" }}>
-        <div className="social-icon">
+        <div className="social-icon d-flex align-items-center">
           <img src={twitterIcon} width="20" height="20" alt="twitter" />
           <img src={faceIcon} width="20" height="25" alt="facebook" />
           <img src={instaIcon} width="20" height="20" alt="instagram" />

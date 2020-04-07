@@ -18,16 +18,16 @@ function UserLogin() {
         body: JSON.stringify(formObject),
         credentials: "same-origin",
         headers: {
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       })
-        .then(response => {
+        .then((response) => {
           console.log("Success:", response);
           return response.json();
         })
         //the data is a parsed response from the JSON
 
-        .then(data => {
+        .then((data) => {
           console.log(data);
           if (data.err) {
             window.location.replace("/");
@@ -35,8 +35,9 @@ function UserLogin() {
             window.location.replace("/members");
           }
         })
-        .catch(function(err) {
+        .catch(function (err) {
           console.log(err);
+          // return response.json("Not a valid user");
         });
     }
   }

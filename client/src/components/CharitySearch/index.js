@@ -36,7 +36,10 @@ function CharitySearch() {
 					</ul>
 				</div>
 				<div className=" col-6 p-4">
-					<CharityCard selectedCharity={selectedCharity} />
+					<CharityCard
+						selectedCharity={selectedCharity}
+						onProfile={false}
+					/>
 				</div>
 			</div>
 		</div>
