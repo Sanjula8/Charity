@@ -37,6 +37,9 @@ function App() {
 					<Route exact path="/profile">
 						<Profile />
 					</Route>
+					<Route path="/profile">
+						<Profile />
+					</Route>
 					<Route exact path="/contact">
 						<Contact />
 					</Route>
