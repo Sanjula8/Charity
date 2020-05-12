@@ -1,6 +1,6 @@
 # Charity Hub
 
-# Deployment
+## Deployment
 
 [Heroku](https://afternoon-reaches-31810.herokuapp.com/)
 
