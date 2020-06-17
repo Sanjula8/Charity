@@ -8,32 +8,31 @@
 */
 
 .social-icon {
-  list-style: none;
-  margin-bottom: 0;
-  align-content: center;
-  width: 120px;
-  justify-content: space-between;
-  padding: 5px;
+	list-style: none;
+	margin-bottom: 0;
+	align-content: center;
+	width: 120px;
+	justify-content: space-between;
+	padding: 5px;
 }
 
 .social-icon img {
-  display: inline;
-  align-content: center;
+	display: inline;
+	align-content: center;
 }
 
 footer {
-  height: 50px;
-  padding-top: 20px;
-  background-color: #f8f9fa;
-  margin-bottom: 0px;
-  box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.19);
+	height: 50px;
+	margin-bottom: 0px;
+	padding-top: 20px;
+	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.19);
 }
 #copyright {
-  font-size: 15pt;
-  text-align: center;
-  height: 100px;
-  background-color: #ffca0a;
-  box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.19);
-  color: black;
-  padding-top: 30px;
+	font-size: 15pt;
+	text-align: center;
+	height: 100px;
+	background-color: #ffca0a;
+	box-shadow: 2px 1px 0px rgba(0, 0, 0, 0.19);
+	color: black;
+	padding-top: 30px;
 }

@@ -1,12 +1,25 @@
 h1 {
-  font-size: 30pt;
+	font-size: 30pt;
+	align-items: center;
 }
 
 section {
-  font-size: 16pt;
+	font-size: 16pt;
 }
 
-#home-container {
-  height: 500px;
-  margin-left: 25px;
+.home-container {
+	height: 500px;
+	margin-left: 25px;
+}
+
+.welcome {
+	font-size: 80px;
+	font-weight: 700;
+	text-align: center;
+	text-shadow: -3px -3px 0 #ffca0a, 3px -3px 0 #ffca0a, -3px 3px 0 #ffca0a,
+		3px 3px 0 #ffca0a;
+}
+
+.about {
+	padding-bottom: 20px;
 }

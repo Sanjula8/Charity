@@ -14,14 +14,12 @@ function Home() {
 		<div>
 			<Navbar />
 			<Header />
-			<div className="container-fluid" id="home-container">
-				<div className="row">
-					<h1>Welcome to CharityHub</h1>
-				</div>
+			<div className="container-fluid home-container">
+				<h1 className="welcome">Welcome to CharityHub</h1>
+				<div className="row"></div>
 				<section className="row dflex-justify-content-between mx-auto">
-					<Blog />
-					<div className="col-4">
-						<h1>COVID-19 update</h1>
+					<div className="col about">
+						<h1>About Us</h1>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 						Nunc aliquet diam tortor, id consequat mauris
 						ullamcorper eu. Orci varius natoque penatibus et magnis
@@ -31,7 +29,7 @@ function Home() {
 						nisi gravida. Duis eget vestibulum quam, ut porttitor
 						sem. Donec sagittis mi sollicitudin turpis
 					</div>
-					<div className="col-6"></div>
+					<Blog />
 				</section>
 			</div>
 			<Footer />
